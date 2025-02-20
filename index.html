@@ -213,3 +213,667 @@ BaltigoFlix 2024 © Todos o direitos reservados</div></div><div class="elementor
 <!-- Page optimized by LiteSpeed Cache @2024-12-27 11:47:17 -->
 
 <!-- Page cached by LiteSpeed Cache 6.3.0.1 on 2024-12-27 11:47:16 -->
+<!DOCTYPE html>
+              <html lang="pt-BR">
+                <head>
+                  <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                  />
+                  <title>Popups Exemplo</title>
+
+                  <style>
+                    /* Estilos do Popup */
+                    @media (min-width: 1025px) {
+                      .popup-container {
+                        position: fixed;
+                        left: 10px;
+                        bottom: 10px;
+                        background: rgba(255, 255, 255, 0.2);
+                        backdrop-filter: blur(5px);
+                        -webkit-backdrop-filter: blur(5px);
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        font-family: Poppins, sans-serif;
+                        font-size: 15px;
+                        opacity: 0;
+                        transform: translateX(-100%);
+                        animation-fill-mode: forwards;
+                        border-radius: 10px;
+                        color: white;
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 17px;
+                        z-index: 9999;
+                      }
+                    }
+                    @media (min-width: 760px) and (max-width: 1024px) {
+                      .popup-container {
+                        position: fixed;
+                        left: 10px;
+                        bottom: 10px;
+                        background: rgba(255, 255, 255, 0.2);
+                        backdrop-filter: blur(5px);
+                        -webkit-backdrop-filter: blur(5px);
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        font-family: Poppins, sans-serif;
+                        font-size: 15px;
+                        opacity: 0;
+                        transform: translateX(-100%);
+                        animation-fill-mode: forwards;
+                        border-radius: 10px;
+                        color: white;
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 15px;
+                        z-index: 9999;
+                      }
+                    }
+                    @media (max-width: 759px) {
+                      .popup-container {
+                        position: fixed;
+                        left: 5px;
+                        right: 5px;
+                        bottom: 30px;
+                        background: rgba(255, 255, 255, 0.2);
+                        backdrop-filter: blur(5px);
+                        -webkit-backdrop-filter: blur(5px);
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        font-family: Poppins, sans-serif;
+                        font-size: 13px;
+                        opacity: 0;
+                        transform: translateX(-100%);
+                        animation-fill-mode: forwards;
+                        border-radius: 10px;
+                        color: white;
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 15px 5px;
+                        z-index: 9999;
+                      }
+                    }
+
+                    /* Estilo do ícone */
+                    .fas.fa-check-circle.fa-2x.icon {
+                      color: #01b35d;
+                    }
+
+                    .popup-container .icon {
+                      margin-right: 10px;
+                    }
+
+                    /* Animações */
+                    @keyframes popup {
+                      0% {
+                        opacity: 0;
+                        transform: translateX(-100%);
+                      }
+                      50% {
+                        opacity: 1;
+                      }
+                      100% {
+                        opacity: 1;
+                        transform: translateX(0);
+                      }
+                    }
+
+                    @keyframes fadeOutUp {
+                      0% {
+                        opacity: 1;
+                        transform: translateY(0);
+                      }
+                      100% {
+                        opacity: 0;
+                        transform: translateY(-100%);
+                      }
+                    }
+
+                    /* Estilo para o nome do cliente */
+                    .destaque-nome {
+                      color: black;
+                    }
+
+                    /* Estilo para o plano com espaçamento ajustado */
+                    .destaque {
+                      margin-right: 5px; /* Espaçamento entre plano e "do" */
+                    }
+
+                    /* Estilo para a marca (BALTIGOFLIX) */
+                    .bonus-brand {
+                      margin-left: 5px; /* Espaçamento entre "do" e a marca */
+                    }
+                  </style>
+                </head>
+                <body>
+                  <!-- Popups de exemplo -->
+                  <div class="popup-container">
+                    <i class="fas fa-check-circle fa-2x icon"></i>
+                    <span class="destaque-nome"><b>Marcio</b></span>
+                    acabou de adquirir o plano
+                    <span class="destaque"><b>Mensal</b></span>
+                    do <b class="bonus-brand">BALTIGOFLIX</b>
+                  </div>
+
+                  <!-- JavaScript para randomizar pop-ups e tempos -->
+                  <script
+                    data-cfasync="false"
+                    src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+                  ></script>
+                  <script type="rocketlazyloadscript">
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const nomes = [
+                            "Marcio", "João", "Ana", "Maria", "Lucas", "Fernanda", "Carlos",
+                            "Patrícia", "Bruno", "Mariana", "Gustavo", "Julia", "Ricardo",
+                            "Luciana", "Eduardo", "Sofia", "Thiago", "Beatriz", "Felipe",
+                            "Larissa", "Rafael", "Vera", "Roberta", "Paulo", "Tânia",
+                            "Tiago", "Simone", "Ricardo", "Claudia", "Renato", "Isabela"
+                        ];
+                        const planos = ["Mensal", "Anual", "Trimestral"];
+                        const popups = [];
+
+                        // Criação dos pop-ups com nomes e planos aleatórios
+                        for (let i = 0; i < 10; i++) {
+                            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+                            const planoAleatorio = planos[Math.floor(Math.random() * planos.length)];
+
+                            const popup = document.createElement('div');
+                            popup.classList.add('popup-container');
+                            popup.innerHTML = `<i class="fas fa-check-circle fa-2x icon"></i>&nbsp;<span class="destaque-nome"><b>${nomeAleatorio}</b></span>&nbsp;assinou o plano&nbsp;<span class="destaque"><b>${planoAleatorio}</b></span>&nbsp;do <b class="bonus-brand">BALTIGOFLIX</b>`;
+                            document.body.appendChild(popup);
+                            popups.push(popup);
+                        }
+
+                        // Função para remover o popup com animação
+                        function removePopup(popup) {
+                            popup.style.animation = "fadeOutUp 3s forwards"; // Ajustado para 3 segundos
+                            setTimeout(function() {
+                                popup.remove();
+                            }, 3000); // Tempo de animação de 3 segundos
+                        }
+
+                        // Função para exibir os pop-ups com tempos aleatórios
+                        function displayPopups() {
+                            let delay = 0;
+                            popups.forEach(function(popup) {
+                                const tempoAleatorio = Math.floor(Math.random() * (15 - 8 + 1)) + 8; // Tempo aleatório entre 8 e 15 segundos
+                                setTimeout(function() {
+                                    popup.style.animationDelay = delay + "s";
+                                    popup.style.opacity = 1;
+                                    popup.style.transform = "translateX(0)";
+                                    setTimeout(function() {
+                                        removePopup(popup);
+                                    }, 3000); // Tempo de exibição do pop-up
+                                }, delay * 1000);
+                                delay += tempoAleatorio; // Incrementando o delay de exibição
+                            });
+                        }
+
+                        // Iniciar a exibição dos pop-ups
+                        displayPopups();
+                    });
+                  </script>
+
+                  <!-- Incluindo o Font Awesome -->
+                  <script
+                    type="rocketlazyloadscript"
+                    src="../kit.fontawesome.com/a076d05399.html"
+                    crossorigin="anonymous"
+                    defer
+                  ></script>
+                  <script>
+                    class RocketElementorAnimation {
+                      constructor() {
+                        (this.deviceMode = document.createElement("span")),
+                          (this.deviceMode.id = "elementor-device-mode"),
+                          this.deviceMode.setAttribute(
+                            "class",
+                            "elementor-screen-only"
+                          ),
+                          document.body.appendChild(this.deviceMode);
+                      }
+                      _detectAnimations() {
+                        let t = getComputedStyle(
+                          this.deviceMode,
+                          ":after"
+                        ).content.replace(/"/g, "");
+                        (this.animationSettingKeys =
+                          this._listAnimationSettingsKeys(t)),
+                          document
+                            .querySelectorAll(
+                              ".elementor-invisible[data-settings]"
+                            )
+                            .forEach((t) => {
+                              const e = t.getBoundingClientRect();
+                              if (e.bottom >= 0 && e.top <= window.innerHeight)
+                                try {
+                                  this._animateElement(t);
+                                } catch (t) {}
+                            });
+                      }
+                      _animateElement(t) {
+                        const e = JSON.parse(t.dataset.settings),
+                          i = e._animation_delay || e.animation_delay || 0,
+                          n = e[this.animationSettingKeys.find((t) => e[t])];
+                        if ("none" === n)
+                          return void t.classList.remove("elementor-invisible");
+                        t.classList.remove(n),
+                          this.currentAnimation &&
+                            t.classList.remove(this.currentAnimation),
+                          (this.currentAnimation = n);
+                        let s = setTimeout(() => {
+                          t.classList.remove("elementor-invisible"),
+                            t.classList.add("animated", n),
+                            this._removeAnimationSettings(t, e);
+                        }, i);
+                        window.addEventListener(
+                          "rocket-startLoading",
+                          function () {
+                            clearTimeout(s);
+                          }
+                        );
+                      }
+                      _listAnimationSettingsKeys(t = "mobile") {
+                        const e = [""];
+                        switch (t) {
+                          case "mobile":
+                            e.unshift("_mobile");
+                          case "tablet":
+                            e.unshift("_tablet");
+                          case "desktop":
+                            e.unshift("_desktop");
+                        }
+                        const i = [];
+                        return (
+                          ["animation", "_animation"].forEach((t) => {
+                            e.forEach((e) => {
+                              i.push(t + e);
+                            });
+                          }),
+                          i
+                        );
+                      }
+                      _removeAnimationSettings(t, e) {
+                        this._listAnimationSettingsKeys().forEach(
+                          (t) => delete e[t]
+                        ),
+                          (t.dataset.settings = JSON.stringify(e));
+                      }
+                      static run() {
+                        const t = new RocketElementorAnimation();
+                        requestAnimationFrame(t._detectAnimations.bind(t));
+                      }
+                    }
+                    document.addEventListener(
+                      "DOMContentLoaded",
+                      RocketElementorAnimation.run
+                    );
+                  </script>
+                  <script
+                    type="text/javascript"
+                    id="perfmatters-delayed-styles-js"
+                  >
+                    !(function () {
+                      const e = [
+                        "keydown",
+                        "mousemove",
+                        "wheel",
+                        "touchmove",
+                        "touchstart",
+                        "touchend",
+                      ];
+                      function t() {
+                        document
+                          .querySelectorAll("link[data-pmdelayedstyle]")
+                          .forEach(function (e) {
+                            e.setAttribute(
+                              "href",
+                              e.getAttribute("data-pmdelayedstyle")
+                            );
+                          }),
+                          e.forEach(function (e) {
+                            window.removeEventListener(e, t, { passive: !0 });
+                          });
+                      }
+                      e.forEach(function (e) {
+                        window.addEventListener(e, t, { passive: !0 });
+                      });
+                    })();
+                  </script>
+                </body>
+
+                <!-- Mirrored from dogflick.com.br/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Feb 2025 16:25:22 GMT -->
+              </html>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--BEGIN: TRACKING CODE MANAGER (v2.3.0) BY INTELLYWP.COM IN FOOTER//-->
+    <script type="rocketlazyloadscript">
+      (function(w,d,s,t){
+          if(w._brpBstr)return;w._brpBstr=t;var f=d.getElementsByTagName(s)[0],j=d.createElement(s);
+          j.async=true;j.src="../ev.braip.com/js/braip-boosterec92.js?v="+t;
+          f.parentNode.insertBefore(j,f);
+      })(window,document,'script',Date.now());
+    </script>
+    <!--END: https://wordpress.org/plugins/tracking-code-manager IN FOOTER//-->
+    <script type="rocketlazyloadscript">
+      window.addEventListener('DOMContentLoaded', function() {
+      				;
+      				(function($, w) {
+      					'use strict';
+      					let $window = $(w);
+
+      					$(document).ready(function() {
+
+      						let isEnable = "";
+      						let isEnableLazyMove = "";
+      						let speed = isEnableLazyMove ? '0.7' : '0.2';
+
+      						if( !isEnable ) {
+      							return;
+      						}
+
+      						if (typeof haCursor == 'undefined' || haCursor == null) {
+      							initiateHaCursorObject(speed);
+      						}
+
+      						setTimeout(function() {
+      							let targetCursor = $('.ha-cursor');
+      							if (targetCursor) {
+      								if (!isEnable) {
+      									$('body').removeClass('hm-init-default-cursor-none');
+      									$('.ha-cursor').addClass('ha-init-hide');
+      								} else {
+      									$('body').addClass('hm-init-default-cursor-none');
+      									$('.ha-cursor').removeClass('ha-init-hide');
+      								}
+      							}
+      						}, 500);
+
+      					});
+
+      				}(jQuery, window));
+      			});
+    </script>
+
+    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+      const lazyloadRunObserver = () => {
+      	const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+      	const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+      		entries.forEach( ( entry ) => {
+      			if ( entry.isIntersecting ) {
+      				let lazyloadBackground = entry.target;
+      				if( lazyloadBackground ) {
+      					lazyloadBackground.classList.add( 'e-lazyloaded' );
+      				}
+      				lazyloadBackgroundObserver.unobserve( entry.target );
+      			}
+      		});
+      	}, { rootMargin: '200px 0px 200px 0px' } );
+      	lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+      		lazyloadBackgroundObserver.observe( lazyloadBackground );
+      	} );
+      };
+      const events = [
+      	'DOMContentLoaded',
+      	'elementor/lazyload/observe',
+      ];
+      events.forEach( ( event ) => {
+      	document.addEventListener( event, lazyloadRunObserver );
+      } );
+    </script>
+    <script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+      "use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+    </script>
+    <script id="rocket-preload-links-js-extra">
+      var RocketPreloadLinksConfig = {
+        excludeUris:
+          "\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/",
+        usesTrailingSlash: "1",
+        imageExt:
+          "jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php",
+        fileExt:
+          "jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm",
+        siteUrl: "https:\/\/dogflick.com.br",
+        onHoverDelay: "100",
+        rateThrottle: "3",
+      };
+    </script>
+    <script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+      (function() {
+      "use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("index.html")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("index.html")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+      }());
+    </script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/themes/hello-elementor/assets/js/hello-frontend.minb12b.js?ver=3.1.1"
+      id="hello-theme-frontend-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/happy-elementor-addons/assets/js/extension-reading-progress-bar.min6319.js?ver=3.15.2"
+      id="happy-reading-progress-bar-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min3958.js?ver=0.2.1"
+      id="jquery-numerator-js"
+    ></script>
+    <script id="happy-elementor-addons-js-extra">
+      var HappyLocalize = {
+        ajax_url: "https:\/\/dogflick.com.br\/wp-admin\/admin-ajax.php",
+        nonce: "0941cf3bd0",
+        pdf_js_lib:
+          "https:\/\/dogflick.com.br\/wp-content\/plugins\/happy-elementor-addons\/assets\/vendor\/pdfjs\/lib",
+      };
+    </script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/happy-elementor-addons/assets/js/happy-addons.min6319.js?ver=3.15.2"
+      id="happy-elementor-addons-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/wp-rocket/assets/js/heartbeat0567.js?ver=3.12.4"
+      id="heartbeat-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/pro-elements/assets/js/webpack-pro.runtime.mind92b.js?ver=3.26.1"
+      id="elementor-pro-webpack-runtime-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/elementor/assets/js/webpack.runtime.min7ac2.js?ver=3.26.3"
+      id="elementor-webpack-runtime-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/elementor/assets/js/frontend-modules.min7ac2.js?ver=3.26.3"
+      id="elementor-frontend-modules-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-includes/js/dist/hooks.min4fdd.js?ver=4d63a3d491d11ffd8ac6"
+      id="wp-hooks-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-includes/js/dist/i18n.minc33c.js?ver=5e580eb46a90c2b997e6"
+      id="wp-i18n-js"
+    ></script>
+    <script type="rocketlazyloadscript" id="wp-i18n-js-after">
+      wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+    </script>
+    <script type="rocketlazyloadscript" id="elementor-pro-frontend-js-before">
+      var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/dogflick.com.br\/wp-admin\/admin-ajax.php","nonce":"11a3537e15","urls":{"assets":"https:\/\/dogflick.com.br\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/dogflick.com.br\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":true},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/dogflick.com.br\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
+    </script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/pro-elements/assets/js/frontend.mind92b.js?ver=3.26.1"
+      id="elementor-pro-frontend-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-includes/js/jquery/ui/core.minb37e.js?ver=1.13.3"
+      id="jquery-ui-core-js"
+    ></script>
+    <script type="rocketlazyloadscript" id="elementor-frontend-js-before">
+      var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.26.3","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_swiper_latest":true,"e_nested_atomic_repeaters":true,"e_onboarding":true,"e_css_smooth_scroll":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"home_screen":true,"landing-pages":true,"nested-elements":true,"editor_v2":true,"link-in-bio":true,"floating-buttons":true},"urls":{"assets":"https:\/\/dogflick.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/dogflick.com.br\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/dogflick.com.br\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"875f41e068"},"swiperClass":"swiper","settings":{"page":{"ha_cmc_init_switcher":"no"},"editorPreferences":[]},"kit":{"body_background_background":"classic","active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_footer_logo_type":"logo","ha_rpb_enable":"no"},"post":{"id":2220,"title":"DOG%20FLICK%20%7C%20Dog%20Flick%20-%20Assista%20Filmes%2C%20S%C3%A9ries%20e%20Canais%20ao%20Vivo%20por%20Apenas%20R%2419%2C90%2Fm%C3%AAs","excerpt":"","featuredImage":false}};
+    </script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/elementor/assets/js/frontend.min7ac2.js?ver=3.26.3"
+      id="elementor-frontend-js"
+    ></script>
+    <script
+      type="rocketlazyloadscript"
+      defer="defer"
+      src="wp-content/plugins/pro-elements/assets/js/elements-handlers.mind92b.js?ver=3.26.1"
+      id="pro-elements-handlers-js"
+    ></script>
+    <script>
+      window.lazyLoadOptions = [
+        {
+          elements_selector:
+            "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",
+          data_src: "lazy-src",
+          data_srcset: "lazy-srcset",
+          data_sizes: "lazy-sizes",
+          class_loading: "lazyloading",
+          class_loaded: "lazyloaded",
+          threshold: 300,
+          callback_loaded: function (element) {
+            if (
+              element.tagName === "IFRAME" &&
+              element.dataset.rocketLazyload == "fitvidscompatible"
+            ) {
+              if (element.classList.contains("lazyloaded")) {
+                if (typeof window.jQuery != "undefined") {
+                  if (jQuery.fn.fitVids) {
+                    jQuery(element).parent().fitVids();
+                  }
+                }
+              }
+            }
+          },
+        },
+        {
+          elements_selector: ".rocket-lazyload",
+          data_src: "lazy-src",
+          data_srcset: "lazy-srcset",
+          data_sizes: "lazy-sizes",
+          class_loading: "lazyloading",
+          class_loaded: "lazyloaded",
+          threshold: 300,
+        },
+      ];
+      window.addEventListener(
+        "LazyLoad::Initialized",
+        function (e) {
+          var lazyLoadInstance = e.detail.instance;
+          if (window.MutationObserver) {
+            var observer = new MutationObserver(function (mutations) {
+              var image_count = 0;
+              var iframe_count = 0;
+              var rocketlazy_count = 0;
+              mutations.forEach(function (mutation) {
+                for (var i = 0; i < mutation.addedNodes.length; i++) {
+                  if (
+                    typeof mutation.addedNodes[i].getElementsByTagName !==
+                    "function"
+                  ) {
+                    continue;
+                  }
+                  if (
+                    typeof mutation.addedNodes[i].getElementsByClassName !==
+                    "function"
+                  ) {
+                    continue;
+                  }
+                  images = mutation.addedNodes[i].getElementsByTagName("img");
+                  is_image = mutation.addedNodes[i].tagName == "IMG";
+                  iframes =
+                    mutation.addedNodes[i].getElementsByTagName("iframe");
+                  is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
+                  rocket_lazy =
+                    mutation.addedNodes[i].getElementsByClassName(
+                      "rocket-lazyload"
+                    );
+                  image_count += images.length;
+                  iframe_count += iframes.length;
+                  rocketlazy_count += rocket_lazy.length;
+                  if (is_image) {
+                    image_count += 1;
+                  }
+                  if (is_iframe) {
+                    iframe_count += 1;
+                  }
+                }
+              });
+              if (image_count > 0 || iframe_count > 0 || rocketlazy_count > 0) {
+                lazyLoadInstance.update();
+              }
+            });
+            var b = document.getElementsByTagName("body")[0];
+            var config = { childList: !0, subtree: !0 };
+            observer.observe(b, config);
+          }
+        },
+        !1
+      );
+    </script>
+    <script
+      data-no-minify="1"
+      async
+      src="wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"
+    ></script>
+    <script type="text/javascript" id="perfmatters-delayed-styles-js">
+      !(function () {
+        const e = [
+          "keydown",
+          "mousemove",
+          "wheel",
+          "touchmove",
+          "touchstart",
+          "touchend",
+        ];
+        function t() {
+          document
+            .querySelectorAll("link[data-pmdelayedstyle]")
+            .forEach(function (e) {
+              e.setAttribute("href", e.getAttribute("data-pmdelayedstyle"));
+            }),
+            e.forEach(function (e) {
+              window.removeEventListener(e, t, { passive: !0 });
+            });
+        }
+        e.forEach(function (e) {
+          window.addEventListener(e, t, { passive: !0 });
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1739428340 -->
